@@ -8,7 +8,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 #Create a variable for the user to set the qt path
 set(QT_INSTALL_PATH "C:/Apps/Programming/Qt/5.15.0/msvc2019_64" CACHE PATH "The path where QT5 is installed")
 set(CMAKE_PREFIX_PATH "${QT_INSTALL_PATH}")
+#Find QT from the user provided path
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
+add_compile_options(/W4 /WX /permissive-)
 
 #We want to use c++17.
 set(CMAKE_CXX_STANDARD 17)
