@@ -11,6 +11,7 @@ set(CMAKE_PREFIX_PATH "${QT_INSTALL_PATH}")
 #Find QT from the user provided path
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+#Set higher compiler warnings, treat warnings as errors and disable langauge extensions
 add_compile_options(/W4 /WX /permissive-)
 
 #We want to use c++17.
