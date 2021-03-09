@@ -1,9 +1,19 @@
 #Set the minimum version of CMake we can use.
 #Currently set to 3.6 due to VS_STARTUP_PROJECT.
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.8)
+
+#The root project and what it is called.
+project("XMLEditor")
+
 #Tell CMake we are using visual studio folders.
 #Also moves the CMake project to a separate folder.
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+# Include the INSTALL target in the build step
+set(CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1)
+
+#Option to build our libraries statically.
+option(BUILD_STATICALLY "If we want to build the libraries statically" OFF)
 
 #Create a variable for the user to set the qt path
 set(QT_INSTALL_PATH "C:/Apps/Programming/Qt/5.15.0/msvc2019_64" CACHE PATH "The path where QT5 is installed")
@@ -14,6 +24,10 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 #Set higher compiler warnings, treat warnings as errors and disable langauge extensions
 add_compile_options(/W4 /WX /permissive-)
 
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+
+#automatically copies the correct qt files over to make the program run.
+add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD COMMAND ${Qt5_DIR}/../../../bin/windeployqt.exe --quick "${CMAKE_CURRENT_BINARY_DIR}/${BINARY_DIR}/$<CONFIG>/")
 #We want to use c++17.
 set(CMAKE_CXX_STANDARD 17)
 
