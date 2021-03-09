@@ -33,9 +33,11 @@ add_subdirectory(Parser)
 #Add the main executable to the project.
 add_executable("${PROJECT_NAME}" "main.cpp")
 
+#Link qt widgets to the project
+target_link_libraries("${PROJECT_NAME}" Qt5::Widgets)
+
 #Set the main executable as the startup project
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}")
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}")
 
 #automatically copies the correct qt files over to make the program run.
-add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD COMMAND ${Qt5_DIR}/../../../bin/windeployqt.exe --quick "${CMAKE_CURRENT_BINARY_DIR}/${BINARY_DIR}/$<CONFIG>/")
+add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD COMMAND "${Qt5_DIR}/../../../bin/windeployqt.exe" --quick "${CMAKE_CURRENT_BINARY_DIR}/${BINARY_DIR}/$<CONFIG>/")
