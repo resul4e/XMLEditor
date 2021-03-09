@@ -5,6 +5,9 @@ cmake_minimum_required(VERSION 3.6)
 #Also moves the CMake project to a separate folder.
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+#We want to use c++17.
+set(CMAKE_CXX_STANDARD 17)
+
 #The root project and what it is called. 
 project("XMLEditor")
 
