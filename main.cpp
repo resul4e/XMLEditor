@@ -1,11 +1,13 @@
 #include <iostream>
 #include "qapplication.h"
+#include <qpushbutton.h>
 
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
 	
-    std::cout << "Hello World" << "\n";
+    QPushButton button("Hello world!");
+    button.show();
 
-    return 0;
+    return QApplication::exec();
 }
