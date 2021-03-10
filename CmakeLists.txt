@@ -27,8 +27,12 @@ add_compile_options(/W4 /WX /permissive-)
 #We want to use c++17.
 set(CMAKE_CXX_STANDARD 17)
 
+#------------------------------------------------------------------------
+# Subdirectories
+#------------------------------------------------------------------------
 #Add the XMLParser directory to the project.
 add_subdirectory(Parser)
+add_subdirectory(Application)
 
 #Add the main executable to the project.
 add_executable("${PROJECT_NAME}" "main.cpp")
