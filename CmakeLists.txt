@@ -5,6 +5,10 @@ cmake_minimum_required(VERSION 3.8)
 #The root project and what it is called.
 project("XMLEditor")
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
 #Tell CMake we are using visual studio folders.
 #Also moves the CMake project to a separate folder.
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
