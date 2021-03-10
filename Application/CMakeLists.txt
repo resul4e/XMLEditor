@@ -7,7 +7,7 @@ set(PARSERLIB_SOURCES
     "MainWindow.cpp")
 
 #Add the library to the porject either as a static project or a shared one. 
-if("${BUILD_STATIC}" EQUAL ON)
+if("${BUILD_STATICALLY}")
     add_library("${PROJECT_NAME}" STATIC "${PARSERLIB_SOURCES}")
 else()
     add_library("${PROJECT_NAME}" SHARED "${PARSERLIB_SOURCES}")
