@@ -1,11 +1,8 @@
 #pragma once
+#include "ui_MainWindow.h"
 #include <qmainwindow.h>
 
-QT_BEGIN_NAMESPACE
-class QTextEdit;
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, private Ui::MainWindow
 {
     Q_OBJECT
 
